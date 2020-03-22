@@ -1,26 +1,50 @@
 // @flow
 import React from 'react';
-import './styles.css';
+import { styles } from './styles';
 import SimpleList from '../atoms/SimpleList';
 
 type SidebarProps = {
-  logo?: string
+  children?: Component
 };
 
+const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const monthNames = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
 const Sidebar = (props: SidebarProps) => {
-  const { logo } = props;
+  const { children, pages } = props;
+  const date = new Date();
+
   return (
-    <div className="sideBarWrapper">
-      <div>
-        <img source={logo} alt="Sidebar Logo" />
+    <div style={styles.sideBarWrapper}>
+      <div style={styles.logoWrapper}>{children}</div>
+      <SimpleList items={pages} />
+      <div style={styles.dateTimeWrapper}>
+        <div>
+          <p style={styles.date}>{weekday[date.getDay()]}</p>
+          <p style={styles.date}>{`${monthNames[date.getMonth()]} ${date.getDate().toString()}`}</p>
+        </div>
+        <div style={styles.timeWrapper}>{`${date.getHours()}:${date.getMinutes()}`}</div>
+        <p style={styles.date}>Actual Time</p>
       </div>
-      <SimpleList />
     </div>
   );
 };
 
 Sidebar.defaultProps = {
-  logo: ''
+  children: undefined
 };
 
 export default Sidebar;
