@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -13,13 +13,20 @@ type SimpleListProps = {
 
 const SimpleList = (props: SimpleListProps) => {
   const { items } = props;
+  const [selectedItem, setSelectedItem] = useState(0);
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
-        {items.map(each => (
-          <ListItem style={styles.button} button>
+        {items.map((each, i) => (
+          <ListItem
+            style={i === selectedItem ? styles.buttonSelected : styles.button}
+            button
+            onClick={() => {
+              setSelectedItem(i);
+            }}
+          >
             <div style={styles.iconWrapper}>
               <ListItemIcon>
                 <InboxIcon style={styles.icon} />

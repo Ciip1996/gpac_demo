@@ -7,6 +7,12 @@ export const styles = {
     height: 49,
     padding: 0
   },
+  buttonSelected: {
+    width: 140,
+    height: 49,
+    padding: 0,
+    backgroundColor: colors.accent
+  },
   iconWrapper: {
     marginLeft: 22
   },
@@ -15,6 +21,10 @@ export const styles = {
   },
   label: {
     marginLeft: -20
+  },
+  selected: {
+    marginLeft: -20,
+    backgroundColor: colors.accent
   }
 };
 

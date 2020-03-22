@@ -2,26 +2,11 @@
 import React from 'react';
 import { styles } from './styles';
 import SimpleList from '../atoms/SimpleList';
+import TimeComponent from '../atoms/Time';
 
 type SidebarProps = {
   children?: Component
 };
-
-const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-const monthNames = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-];
 
 const Sidebar = (props: SidebarProps) => {
   const { children, pages } = props;
@@ -31,14 +16,7 @@ const Sidebar = (props: SidebarProps) => {
     <div style={styles.sideBarWrapper}>
       <div style={styles.logoWrapper}>{children}</div>
       <SimpleList items={pages} />
-      <div style={styles.dateTimeWrapper}>
-        <div>
-          <p style={styles.date}>{weekday[date.getDay()]}</p>
-          <p style={styles.date}>{`${monthNames[date.getMonth()]} ${date.getDate().toString()}`}</p>
-        </div>
-        <div style={styles.timeWrapper}>{`${date.getHours()}:${date.getMinutes()}`}</div>
-        <p style={styles.date}>Actual Time</p>
-      </div>
+      <TimeComponent date={date} />
     </div>
   );
 };
