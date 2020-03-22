@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import './styles.css';
 
@@ -12,8 +13,7 @@ class Market extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div>Header</div>
-        <div>Body</div>
+        <div>Content here!</div>
       </div>
     );
   }

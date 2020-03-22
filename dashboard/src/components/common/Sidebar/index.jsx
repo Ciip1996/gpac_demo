@@ -1,13 +1,28 @@
+// @flow
 import React from 'react';
-import './styles.css';
+import { styles } from './styles';
 import SimpleList from '../atoms/SimpleList';
+import TimeComponent from '../atoms/Time';
 
-const Sidebar = () => {
-  //   const { items } = props;
+type SidebarProps = {
+  children?: Component
+};
+
+const Sidebar = (props: SidebarProps) => {
+  const { children, pages } = props;
+  const date = new Date();
+
   return (
-    <div className="sideBarWrapper">
-      <SimpleList />
+    <div style={styles.sideBarWrapper}>
+      <div style={styles.logoWrapper}>{children}</div>
+      <SimpleList items={pages} />
+      <TimeComponent date={date} />
     </div>
   );
 };
+
+Sidebar.defaultProps = {
+  children: undefined
+};
+
 export default Sidebar;

@@ -1,32 +1,40 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// @flow
+import React, { useState } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
+import { useStyles, styles } from './styles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    height: '100%',
-    maxWidth: 360,
-    backgroundColor: '#1A1C21',
-    color: '#FFF'
-  }
-}));
+type SimpleListProps = {
+  items: List<string>
+};
 
-const SimpleList = () => {
+const SimpleList = (props: SimpleListProps) => {
+  const { items } = props;
+  const [selectedItem, setSelectedItem] = useState(0);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-        </ListItem>
+        {items.map((each, i) => (
+          <ListItem
+            style={i === selectedItem ? styles.buttonSelected : styles.button}
+            button
+            onClick={() => {
+              setSelectedItem(i);
+            }}
+          >
+            <div style={styles.iconWrapper}>
+              <ListItemIcon>
+                <InboxIcon style={styles.icon} />
+              </ListItemIcon>
+            </div>
+            <ListItemText style={styles.label} disableTypography primary={each} />
+          </ListItem>
+        ))}
       </List>
     </div>
   );
