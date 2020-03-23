@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { styles } from './styles';
+import { AccentButton } from '../../common/atoms';
 
 class Market extends Component {
   constructor(props) {
@@ -13,10 +14,14 @@ class Market extends Component {
   render() {
     return (
       <div style={styles.marketWrapper}>
-        <div style={styles.headerWrapper}>HEADER here!</div>
+        <div style={styles.searchBarWrapper}> </div>
         <div style={styles.contentWrapper}>
-          <div style={styles.searchBarWrapper}>Searchbar</div>
-          <div style={styles.listWrapper}>List View</div>
+          <div style={styles.circle} />
+          <div style={styles.headerWrapper}>
+            <p style={styles.label}>Market</p>
+            <AccentButton width={175} text="Add new talent" />
+          </div>
+          <div style={styles.listWrapper}> </div>
         </div>
       </div>
     );

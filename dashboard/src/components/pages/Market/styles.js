@@ -8,7 +8,7 @@ export const styles = {
     justifyContent: 'flex-end',
     color: colors.white
   },
-  headerWrapper: {
+  searchBarWrapper: {
     display: 'flex',
     flex: 1,
     backgroundColor: colors.searchBar
@@ -17,18 +17,35 @@ export const styles = {
     display: 'flex',
     flex: 12,
     flexDirection: 'column',
-    backgroundColor: colors.appBackground
+    backgroundColor: colors.appBackground,
+    paddingRight: 78,
+    paddingLeft: 78
   },
-  searchBarWrapper: {
+  headerWrapper: {
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     flex: 2,
-    flexDirection: 'column',
-    backgroundColor: colors.lightGrey // TODO replace with trasnparent
+    flexDirection: 'row',
+    backgroundColor: colors.transparent
+  },
+  circle: {
+    position: 'absolute',
+    top: 95,
+    left: 172,
+    backgroundColor: colors.accent,
+    width: 22,
+    height: 22,
+    borderRadius: 22
+  },
+  label: {
+    fontFamily: 'Montserrat-Bold, sans-serif',
+    fontSize: 24
   },
   listWrapper: {
     display: 'flex',
     flex: 12,
     flexDirection: 'column',
-    backgroundColor: colors.transparent
+    backgroundColor: colors.lightGrey
   }
 };
