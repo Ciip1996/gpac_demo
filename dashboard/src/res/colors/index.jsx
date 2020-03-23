@@ -6,7 +6,8 @@ const colors = {
   black: '#000000',
   transparent: '#0000',
   red: '#F22',
-  lightGrey: '#CECECE'
+  lightGrey: '#CECECE',
+  searchBar: '#20232B'
 };
 
 export default colors;
