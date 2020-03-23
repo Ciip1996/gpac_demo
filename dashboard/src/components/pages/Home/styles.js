@@ -16,6 +16,7 @@ export const styles = {
     backgroundColor: colors.sideBar
   },
   contentPage: {
-    flex: 12
+    flex: 1,
+    display: 'flex'
   }
 };
