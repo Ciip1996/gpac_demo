@@ -1,5 +1,45 @@
 import React from 'react';
 
+export const MoreIcon = ({ style = {}, fill = '#000', width = '100%', height = '100%' }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    style={style}
+    height={height}
+    viewBox="0 0 33 7"
+  >
+    <defs>
+      <style>.a{fill}</style>
+    </defs>
+    <g transform="translate(-1313 -26)">
+      <circle
+        fill={fill}
+        className="a"
+        cx="3.5"
+        cy="3.5"
+        r="3.5"
+        transform="translate(1313 33) rotate(-90)"
+      />
+      <circle
+        fill={fill}
+        className="a"
+        cx="3.5"
+        cy="3.5"
+        r="3.5"
+        transform="translate(1326 33) rotate(-90)"
+      />
+      <circle
+        fill={fill}
+        className="a"
+        cx="3.5"
+        cy="3.5"
+        r="3.5"
+        transform="translate(1339 33) rotate(-90)"
+      />
+    </g>
+  </svg>
+);
+
 export const AddLogo = ({ style = {}, fill = '#000', width = '100%', height = '100%' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

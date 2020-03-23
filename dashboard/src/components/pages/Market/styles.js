@@ -11,7 +11,10 @@ export const styles = {
   searchBarWrapper: {
     display: 'flex',
     flex: 1,
-    backgroundColor: colors.searchBar
+    flexDirection: 'row',
+    backgroundColor: colors.searchBarContainer,
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   contentWrapper: {
     display: 'flex',

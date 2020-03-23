@@ -7,8 +7,10 @@ const colors = {
   transparent: '#0000',
   red: '#F22',
   lightGrey: '#CECECE',
-  searchBar: '#20232B',
-  accentButton: '#4056F4'
+  searchBarContainer: '#20232B',
+  searchBar: '#2B313B',
+  accentButton: '#4056F4',
+  divider: '#7B868D'
 };
 
 export default colors;
