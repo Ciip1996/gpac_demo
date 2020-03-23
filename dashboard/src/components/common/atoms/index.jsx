@@ -1,7 +1,7 @@
 import AccentButton from './AccentButton';
 import SimpleList from './SimpleList';
 import Time from './Time';
-import SearchBar from './SearchBar';
 import Selector from './Selector';
+import UserImage from './UserImage';
 
-export { AccentButton, SimpleList, Time, SearchBar, Selector };
+export { AccentButton, SimpleList, Time, UserImage, Selector };

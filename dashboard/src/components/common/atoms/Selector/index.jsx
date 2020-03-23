@@ -11,7 +11,7 @@ type SelectorProps = {
   customStyle?: object
 };
 
-const customStyles = theme => ({
+const customStyles = () => ({
   icon: {
     color: 'white'
   },

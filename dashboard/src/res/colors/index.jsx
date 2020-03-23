@@ -10,7 +10,9 @@ const colors = {
   searchBarContainer: '#20232B',
   searchBar: '#2B313B',
   accentButton: '#4056F4',
-  divider: '#7B868D'
+  divider: '#7B868D',
+  shadow: '60617029',
+  clientCardBackground: '#34343C'
 };
 
 export default colors;
