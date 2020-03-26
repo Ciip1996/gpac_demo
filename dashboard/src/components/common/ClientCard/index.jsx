@@ -32,7 +32,7 @@ const ClientCard = (props: ClientCardProps) => {
         <div style={styles.regularLabel}>{phone}</div>
         <div style={styles.regularLabel}>{salary}</div>
         <div style={styles.regularLabel}>{location}</div>
-        <RegularButton width={175} text="Add new talent" />
+        <RegularButton width={175} text="View Profile" />
       </div>
     </div>
   );
