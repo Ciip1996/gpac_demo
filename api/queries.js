@@ -28,14 +28,18 @@ const getUsers = (request, response) => {
 
 
   const createUser = (request, response) => {
-    const { name, industry, job_position, phone, salary, location, title, email } = request.body
-  
-    pool.query('INSERT INTO clients (name, industry, job_position, phone, salary, location, title, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, email], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(201).send(`User added with ID: ${result.insertId}`)
-    })
+    const { name = '', industry= '', job_position='', phone, salary, location='', title='', email='', images='https://africajurists.org/wp-content/uploads/2015/03/empty_avatar.jpg' } = request.query;
+    pool.query(
+      'INSERT INTO clients (name, industry, job_position, phone, salary, location, title, email, images) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', 
+      [name, industry, job_position, phone, salary, location, title, email, images],
+      (error, results) => {
+        if (error) {
+          console.log(error);
+          throw error;
+        }
+        if(results.rowCount)
+          response.status(201).send(`User added succesfully`);
+    });
   }
   
   
