@@ -1,4 +1,31 @@
 import colors from './colors';
-import { GpacLogo, ReactLogo, AddLogo, MoreIcon } from './icons';
+import {
+  GpacLogo,
+  ReactLogo,
+  AddLogo,
+  MoreIcon,
+  MarketIcon,
+  ComapniesIcon,
+  SendOutsIcon,
+  MapIcon,
+  TasksToolIcon,
+  SFProjects,
+  JobOrdersIcon,
+  DashboardIcon
+} from './icons';
 
-export { colors, GpacLogo, ReactLogo, AddLogo, MoreIcon };
+export {
+  colors,
+  GpacLogo,
+  ReactLogo,
+  AddLogo,
+  MoreIcon,
+  MarketIcon,
+  ComapniesIcon,
+  SendOutsIcon,
+  MapIcon,
+  TasksToolIcon,
+  SFProjects,
+  JobOrdersIcon,
+  DashboardIcon
+};

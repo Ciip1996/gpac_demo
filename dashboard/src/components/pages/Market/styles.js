@@ -49,6 +49,22 @@ export const styles = {
     display: 'flex',
     flex: 12,
     flexDirection: 'column',
-    backgroundColor: colors.transparent
+    backgroundColor: colors.transparent,
+    overflowY: 'scroll'
+  },
+  newNotFound: {
+    height: '50vh',
+    width: '100%',
+    position: 'relative'
+  },
+  newNotFoundCont: {
+    width: '100%',
+    paddingTop: '10vh',
+    fontSize: 100,
+    textShadow: '2px 2px 5px rgba(39, 39, 39, 0.403)'
+  },
+  skeletonCard: {
+    height: 90,
+    width: '100%'
   }
 };
