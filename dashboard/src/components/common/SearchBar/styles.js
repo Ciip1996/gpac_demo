@@ -1,4 +1,4 @@
-import { colors } from '../../../../res';
+import { colors } from '../../../res';
 
 export const styles = {
   container: {

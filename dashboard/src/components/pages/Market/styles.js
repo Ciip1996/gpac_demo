@@ -20,7 +20,7 @@ export const styles = {
     display: 'flex',
     flex: 12,
     flexDirection: 'column',
-    backgroundColor: colors.appBackground,
+    backgroundColor: colors.transparent,
     paddingRight: 78,
     paddingLeft: 78
   },
@@ -49,6 +49,6 @@ export const styles = {
     display: 'flex',
     flex: 12,
     flexDirection: 'column',
-    backgroundColor: colors.lightGrey
+    backgroundColor: colors.transparent
   }
 };

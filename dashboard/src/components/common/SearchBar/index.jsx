@@ -5,20 +5,20 @@ import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import { Selector } from '..';
-import { MoreIcon, colors } from '../../../../res';
+import { Selector } from '../atoms';
+import { MoreIcon, colors } from '../../../res';
 import { styles } from './styles';
 
-type SearchBarProps = {};
+// type SearchBarProps = {};
 
-const SearchBar = (props: SearchBarProps) => {
+const SearchBar = () => {
   const selectorStyle = { color: '#FFF' };
   return (
     <div style={styles.container}>
       <Paper component="form" style={styles.root}>
         <InputBase
           style={styles.input}
-          placeholder="Quick Search…"
+          placeholder="   Quick Search…"
           inputProps={{ 'aria-label': 'Quick Search' }}
         />
         <Divider style={styles.divider} orientation="vertical" />
