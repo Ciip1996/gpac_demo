@@ -16,6 +16,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { SearchBar, ClientCard } from '../../common';
 import { AccentButton } from '../../common/atoms';
 import { styles } from './styles';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Market = () => {
   const [clients, setClients] = useState([]);
@@ -78,7 +79,7 @@ const Market = () => {
         // always executed
         setIsLoading(false);
       });
-  }, []);
+  }, [responseStatus]);
 
   const handleAddTalent = () => {
     const url = 'http://192.168.0.7:80/clients';
@@ -101,8 +102,8 @@ const Market = () => {
     setSnackBarOpen(true);
   };
   return (
-    <div style={styles.marketWrapper}>
-      <div style={styles.searchBarWrapper}>
+    <div className="w-100 h-100" style={styles.marketWrapper}>
+      <div className="w-100" style={styles.searchBarWrapper}>
         <SearchBar />
       </div>
       <div style={styles.contentWrapper}>
@@ -111,7 +112,7 @@ const Market = () => {
           <p style={styles.label}>Market</p>
           <AccentButton width={175} text="Add new talent" onClick={handleClickOpen} />
         </div>
-        <div style={styles.listWrapper}>
+        <div className="overflow-auto container-fluid " style={styles.listWrapper}>
           {isLoading
             ? [0, 1, 2, 3, 4, 5, 6].map(i => {
                 return (
@@ -134,6 +135,7 @@ const Market = () => {
           ) : null}
           {clients.map(client => (
             <ClientCard
+              className="d-lg-none d-xl-block"
               key={client.id}
               name={client.name}
               title={client.title}

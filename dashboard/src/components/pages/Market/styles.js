@@ -2,18 +2,17 @@ import { colors } from '../../../res';
 
 export const styles = {
   marketWrapper: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    color: colors.white
+    // display: 'flex',
+    // flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'flex-end',
   },
   searchBarWrapper: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: colors.searchBarContainer,
-    justifyContent: 'space-around',
+    // display: 'flex',
+    // flex: 1,
+    // flexDirection: 'row',
+    // justifyContent: 'space-around',
+    marginLeft: 10,
     alignItems: 'center'
   },
   contentWrapper: {
@@ -30,11 +29,12 @@ export const styles = {
     justifyContent: 'space-between',
     flex: 2,
     flexDirection: 'row',
-    backgroundColor: colors.transparent
+    backgroundColor: colors.transparent,
+    minHeight: 93
   },
   circle: {
     position: 'absolute',
-    top: 95,
+    top: 90,
     left: 172,
     backgroundColor: colors.accent,
     width: 22,
@@ -43,14 +43,22 @@ export const styles = {
   },
   label: {
     fontFamily: 'Montserrat-Bold, sans-serif',
-    fontSize: 24
+    fontSize: 24,
+    color: colors.white
+  },
+  full: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'red',
+    overflow: 'hidden'
   },
   listWrapper: {
-    display: 'flex',
-    flex: 12,
-    flexDirection: 'column',
-    backgroundColor: colors.transparent,
-    overflowY: 'scroll'
+    overflow: 'auto',
+    display: 'block',
+    minHeight: 500,
+    maxHeight: 1000,
+    height: '75vh'
   },
   newNotFound: {
     height: '50vh',

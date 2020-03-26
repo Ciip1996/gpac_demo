@@ -23,7 +23,8 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '15%'
   },
   regularLabel: {
     color: colors.lightGrey,

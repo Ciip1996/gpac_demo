@@ -5,7 +5,9 @@ export const styles = {
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    backgroundColor: colors.searchBarContainer,
+    height: 60
   },
   root: {
     padding: '2px 4px',
@@ -13,6 +15,7 @@ export const styles = {
     alignItems: 'center',
     width: '60%',
     minWidth: 700,
+    marginTop: 10,
     height: 40,
     backgroundColor: colors.searchBar
   },
