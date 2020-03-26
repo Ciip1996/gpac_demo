@@ -1,12 +1,9 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { styles } from './styles';
 import axios from 'axios';
-import { AccentButton } from '../../common/atoms';
-import { SearchBar, ClientCard } from '../../common';
 import { Skeleton } from '@material-ui/lab';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import {  Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -16,12 +13,20 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { SearchBar, ClientCard } from '../../common';
+import { AccentButton } from '../../common/atoms';
+import { styles } from './styles';
 
 const Market = () => {
   const [clients, setClients] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
   const [open, setOpen] = useState(false);
+  const [responseStatus, setResponseStatus] = useState({
+    message: '',
+    succesful: false
+  });
+
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [newTalent, setNewTalent] = useState({
     name: 'test',
@@ -31,15 +36,15 @@ const Market = () => {
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-  
-  const handleChangeTextInput = (event) => {
-    const target = event.target;
-    const name = target.name;
+
+  const handleChangeTextInput = event => {
+    const { target } = event;
+    const { name } = target;
     setNewTalent({
       ...newTalent,
       [name]: target.value
     });
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,39 +58,45 @@ const Market = () => {
   };
 
   useEffect(() => {
-    axios.get('http://192.168.0.7:80/clients')
-    .then(function (response) {
-      // handle success
-      console.log(response);
-      setClients(response.data);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-      setError({message: error, status: true});
-    })
-    .then(function () {
-      // always executed
-      console.log('CLIENTS',clients);
-      setIsLoading(false);
-    });
-  },[]);
+    axios
+      .get('http://192.168.0.7:80/clients')
+      .then(response => {
+        // handle success
+        setClients(response.data);
+        setResponseStatus({ message: 'The talent was succesfullt added!', succesful: true });
+      })
+      .catch(e => {
+        // handle error
+        console.log(e);
+        setError({ message: e, status: true });
+        setResponseStatus({
+          message: 'An error ocurred while adding new Talent!',
+          succesful: false
+        });
+      })
+      .then(() => {
+        // always executed
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleAddTalent = () => {
-    const url = "http://192.168.0.7:80/clients";
+    const url = 'http://192.168.0.7:80/clients';
     const options = {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       data: JSON.stringify({}),
-      url,
+      url
     };
-    axios(options).catch((error) => {
-      console.log(error);
-    })
-    .then(() => {
-      console.log('clients posted',clients);
-      setIsLoading(false);
-    });
+    axios(options)
+      .catch(e => {
+        console.log(e);
+        setSnackBarOpen(true);
+      })
+      .then(() => {
+        console.log('clients posted', clients);
+        setIsLoading(false);
+      });
     handleClose();
     setSnackBarOpen(true);
   };
@@ -98,31 +109,30 @@ const Market = () => {
         <div style={styles.circle} />
         <div style={styles.headerWrapper}>
           <p style={styles.label}>Market</p>
-          <AccentButton width={175} text="Add new talent" onClick={handleClickOpen}/>
+          <AccentButton width={175} text="Add new talent" onClick={handleClickOpen} />
         </div>
         <div style={styles.listWrapper}>
-          {isLoading ? [0, 1, 2, 3, 4, 5, 6].map(i => {
-                  return (
-                    <Grid item key={i}>
-                      <Skeleton style={styles.skeletonCard}/>
-                      <Skeleton style={styles.skeletonCard} animation={false} />
-                      <Skeleton style={styles.skeletonCard} animation="wave" />
-                    </Grid>
-                  );
-                })
-              : null}
-            {error.status ? (
-              <div style={styles.newNotFound}>
-                <div style={styles.newNotFoundCont}>
-                  <SentimentDissatisfiedIcon color='error' fontSize='inherit' />
-                  <h2>
-                    There is something wrong. We are currently working on it.
-                  </h2>
-                  <h2>Please come back later!</h2>
-                </div>
+          {isLoading
+            ? [0, 1, 2, 3, 4, 5, 6].map(i => {
+                return (
+                  <Grid item key={i}>
+                    <Skeleton style={styles.skeletonCard} />
+                    <Skeleton style={styles.skeletonCard} animation={false} />
+                    <Skeleton style={styles.skeletonCard} animation="wave" />
+                  </Grid>
+                );
+              })
+            : null}
+          {error.status ? (
+            <div style={styles.newNotFound}>
+              <div style={styles.newNotFoundCont}>
+                <SentimentDissatisfiedIcon color="error" fontSize="inherit" />
+                <h2>There is something wrong. We are currently working on it.</h2>
+                <h2>Please come back later!</h2>
               </div>
-            ) : null}
-          {clients.map((client) => (
+            </div>
+          ) : null}
+          {clients.map(client => (
             <ClientCard
               key={client.id}
               name={client.name}
@@ -133,7 +143,8 @@ const Market = () => {
               salary={client.salary}
               location={client.location}
               image={client.images}
-            />))}
+            />
+          ))}
         </div>
       </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -150,11 +161,9 @@ const Market = () => {
             label="Name"
             type="text"
             fullWidth
-            value='test'
-
-            value='test'
+            value="test"
           />
-           <TextField
+          <TextField
             autoFocus
             name="title"
             margin="dense"
@@ -162,11 +171,10 @@ const Market = () => {
             label="Title"
             type="text"
             fullWidth
-            value='test'
-
+            value="test"
             onChange={handleChangeTextInput}
           />
-           <TextField
+          <TextField
             autoFocus
             name="job_position"
             margin="dense"
@@ -174,11 +182,10 @@ const Market = () => {
             label="Job Position"
             type="text"
             fullWidth
-            value='test'
-
+            value="test"
             onChange={handleChangeTextInput}
           />
-           <TextField
+          <TextField
             autoFocus
             name="phone"
             margin="dense"
@@ -186,7 +193,7 @@ const Market = () => {
             label="Phone"
             type="number"
             fullWidth
-            value='123'
+            value="123"
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -197,10 +204,10 @@ const Market = () => {
             label="Salary"
             type="number"
             fullWidth
-            value='123'
+            value="123"
             onChange={handleChangeTextInput}
           />
-           <TextField
+          <TextField
             autoFocus
             name="location"
             margin="dense"
@@ -208,10 +215,10 @@ const Market = () => {
             label="location"
             type="text"
             fullWidth
-            value='test'
+            value="test"
             onChange={handleChangeTextInput}
           />
-           <TextField
+          <TextField
             autoFocus
             name="email"
             margin="dense"
@@ -219,28 +226,31 @@ const Market = () => {
             label="E-mail"
             type="email"
             fullWidth
-            value='test'
+            value="test"
             onChange={handleChangeTextInput}
           />
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAddTalent}
-            color="primary">
+          <Button onClick={handleAddTalent} color="primary">
             Add
           </Button>
         </DialogActions>
       </Dialog>
       <Snackbar open={snackBarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        {/* <Alert severity="error">An error ocurred while adding new Talent!</Alert> */}
-        <Alert onClose={handleCloseSnackbar} severity="success">
-            The talent was succesfullt added!
-        </Alert>
+        {!responseStatus.succesful ? (
+          <Alert onClose={handleCloseSnackbar} severity="error">
+            {responseStatus.message}
+          </Alert>
+        ) : (
+          <Alert onClose={handleCloseSnackbar} severity="success">
+            {responseStatus.message}
+          </Alert>
+        )}
       </Snackbar>
     </div>
   );
-}
+};
 export default Market;
