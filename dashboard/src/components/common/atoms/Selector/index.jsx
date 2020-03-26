@@ -13,7 +13,8 @@ type SelectorProps = {
 
 const customStyles = () => ({
   icon: {
-    color: 'white'
+    color: 'white',
+    shadows: ['none']
   },
   root: {
     color: 'white'

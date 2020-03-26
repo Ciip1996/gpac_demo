@@ -18,7 +18,7 @@ const SearchBar = () => {
       <Paper component="form" style={styles.root}>
         <InputBase
           style={styles.input}
-          placeholder="Quick Search…"
+          placeholder="   Quick Search…"
           inputProps={{ 'aria-label': 'Quick Search' }}
         />
         <Divider style={styles.divider} orientation="vertical" />
