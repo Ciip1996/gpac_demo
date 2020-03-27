@@ -2,6 +2,7 @@
 
 export const styles = {
   formControl: {
-    width: 186
+    width: 186,
+    maxWith: 186
   }
 };

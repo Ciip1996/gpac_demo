@@ -1,22 +1,30 @@
 import { colors } from '../../../res';
 
+const sidebarWidth = 140;
 export const styles = {
   homeWrapper: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
+    // display: 'flex',
+    // flexDirection: 'row',
     margin: '0 auto',
-    backgroundColor: colors.appBackground,
-    minHeight: 750
+    backgroundColor: colors.appBackground
+    // minHeight: 750
   },
   sidebar: {
-    flex: 3,
-    maxWidth: 140,
-    backgroundColor: colors.sideBar
+    // flex: 3,
+    maxWidth: sidebarWidth,
+    backgroundColor: colors.sideBar,
+    margin: 0,
+    padding: 0,
+    position: 'fixed',
+    height: '100%',
+    overflow: 'hidden'
   },
   contentPage: {
-    flex: 1,
-    display: 'flex'
+    float: 'left',
+    paddingLeft: sidebarWidth
+    // marginLeft: 15
+    // flex: 1,
+    // display: 'flex'
+    // marginLeft: 140,
   }
 };

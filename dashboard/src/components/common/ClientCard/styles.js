@@ -23,15 +23,30 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '15%'
   },
   regularLabel: {
     color: colors.lightGrey,
     fontFamily: 'Roboto-Light, sans-serif',
-    fontSize: 14
+    fontSize: 14,
+    minWidth: 90,
+    textOverflow: 'ellipsis'
   },
   lblTitle: {
+    color: colors.lightGrey,
+    fontFamily: 'Roboto-Light, sans-serif',
+    fontSize: 14,
+    minWidth: 90,
+    textAlign: 'left'
+  },
+
+  lblName: {
     fontFamily: 'Roboto-Bold, sans-serif',
-    fontSize: 18
+    fontSize: 18,
+    width: '105%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
 };
