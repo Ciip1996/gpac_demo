@@ -17,7 +17,7 @@ import { SearchBar, ClientCard } from '../../common';
 import { AccentButton } from '../../common/atoms';
 import { styles } from './styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import db from "../../../../../database";
+import db from "../../../database";
 
 const Market = () => {
   const [clients, setClients] = useState([]);
