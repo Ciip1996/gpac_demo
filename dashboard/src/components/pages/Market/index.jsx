@@ -29,10 +29,7 @@ const Market = () => {
   });
 
   const [snackBarOpen, setSnackBarOpen] = useState(false);
-  const [newTalent, setNewTalent] = useState({
-    name: 'test',
-    phone: 'test'
-  });
+  const [newTalent, setNewTalent] = useState({});
 
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -82,14 +79,10 @@ const Market = () => {
   }, [responseStatus]);
 
   const handleAddTalent = () => {
+    console.log('newTalent', newTalent);
     const url = 'http://192.168.0.7:80/clients';
-    const options = {
-      method: 'POST',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: JSON.stringify({}),
-      url
-    };
-    axios(options)
+    axios
+      .post(url, null, { params: newTalent })
       .catch(e => {
         console.log(e);
         setSnackBarOpen(true);
@@ -133,20 +126,22 @@ const Market = () => {
               </div>
             </div>
           ) : null}
-          {clients.map(client => (
-            <ClientCard
-              className="d-lg-none d-xl-block"
-              key={client.id}
-              name={client.name}
-              title={client.title}
-              insustry={client.industry}
-              jobPosition={client.job_position}
-              phone={client.phone}
-              salary={client.salary}
-              location={client.location}
-              image={client.images}
-            />
-          ))}
+          {!error.status
+            ? clients.map(client => (
+                <ClientCard
+                  className="d-lg-none d-xl-block"
+                  key={client.id}
+                  name={client.name}
+                  title={client.title}
+                  insustry={client.industry}
+                  jobPosition={client.job_position}
+                  phone={client.phone}
+                  salary={client.salary}
+                  location={client.location}
+                  image={client.images}
+                />
+              ))
+            : null}
         </div>
       </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -163,7 +158,6 @@ const Market = () => {
             label="Name"
             type="text"
             fullWidth
-            value="test"
           />
           <TextField
             autoFocus
@@ -173,7 +167,16 @@ const Market = () => {
             label="Title"
             type="text"
             fullWidth
-            value="test"
+            onChange={handleChangeTextInput}
+          />
+          <TextField
+            autoFocus
+            name="industry"
+            margin="dense"
+            id="industry"
+            label="Industry"
+            type="text"
+            fullWidth
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -184,7 +187,6 @@ const Market = () => {
             label="Job Position"
             type="text"
             fullWidth
-            value="test"
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -195,7 +197,6 @@ const Market = () => {
             label="Phone"
             type="number"
             fullWidth
-            value="123"
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -206,7 +207,6 @@ const Market = () => {
             label="Salary"
             type="number"
             fullWidth
-            value="123"
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -217,7 +217,6 @@ const Market = () => {
             label="location"
             type="text"
             fullWidth
-            value="test"
             onChange={handleChangeTextInput}
           />
           <TextField
@@ -228,7 +227,6 @@ const Market = () => {
             label="E-mail"
             type="email"
             fullWidth
-            value="test"
             onChange={handleChangeTextInput}
           />
         </DialogContent>

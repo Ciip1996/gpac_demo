@@ -25,7 +25,7 @@ const ClientCard = (props: ClientCardProps) => {
         </div>
         <div style={styles.container}>
           <div style={styles.lblName}>{name}</div>
-          <div style={styles.regularLabel}>{title}</div>
+          <div style={styles.lblTitle}>{title}</div>
         </div>
         <div style={styles.regularLabel}>{insustry}</div>
         <div style={styles.regularLabel}>{jobPosition}</div>
