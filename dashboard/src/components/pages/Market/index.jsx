@@ -17,6 +17,7 @@ import { SearchBar, ClientCard } from '../../common';
 import { AccentButton } from '../../common/atoms';
 import { styles } from './styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import db from "../../../../../database";
 
 const Market = () => {
   const [clients, setClients] = useState([]);
@@ -57,7 +58,7 @@ const Market = () => {
   
   useEffect(() => {
     axios
-      .get('http://localhost:3000/clients')
+      .get(db)
       .then(response => {
         // handle success
         setClients(response.data);
@@ -80,7 +81,7 @@ const Market = () => {
 
   const handleAddTalent = () => {
     console.log('newTalent', newTalent);
-    const url = 'http://localhost:3000/clients';
+    const url = db;
     axios
       .post(url, null, { params: newTalent })
       .catch(e => {
