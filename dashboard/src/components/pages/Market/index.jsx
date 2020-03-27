@@ -54,10 +54,10 @@ const Market = () => {
   const handleCloseSnackbar = () => {
     setSnackBarOpen(false);
   };
-
+  
   useEffect(() => {
     axios
-      .get('http://192.168.0.7:80/clients')
+      .get('http://localhost:3000/clients')
       .then(response => {
         // handle success
         setClients(response.data);
@@ -80,7 +80,7 @@ const Market = () => {
 
   const handleAddTalent = () => {
     console.log('newTalent', newTalent);
-    const url = 'http://192.168.0.7:80/clients';
+    const url = 'http://localhost:3000/clients';
     axios
       .post(url, null, { params: newTalent })
       .catch(e => {
