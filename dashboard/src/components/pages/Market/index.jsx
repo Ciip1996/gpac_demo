@@ -17,6 +17,7 @@ import { SearchBar, ClientCard } from '../../common';
 import { AccentButton } from '../../common/atoms';
 import { styles } from './styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { db }   from "../../../database.js";
 
 const Market = () => {
   const [clients, setClients] = useState([]);
@@ -54,10 +55,10 @@ const Market = () => {
   const handleCloseSnackbar = () => {
     setSnackBarOpen(false);
   };
-
+  
   useEffect(() => {
     axios
-      .get('http://192.168.0.7:80/clients')
+      .get(db.toString())
       .then(response => {
         // handle success
         setClients(response.data);
@@ -80,7 +81,7 @@ const Market = () => {
 
   const handleAddTalent = () => {
     console.log('newTalent', newTalent);
-    const url = 'http://192.168.0.7:80/clients';
+    const url = db.toString();
     axios
       .post(url, null, { params: newTalent })
       .catch(e => {
