@@ -77,7 +77,7 @@ const Market = () => {
         // always executed
         setIsLoading(false);
       });
-  }, []);
+  }, [responseStatus]);
 
   const handleAddTalent = () => {
     console.log('newTalent', newTalent);
